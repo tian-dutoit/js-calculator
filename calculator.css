@@ -1,0 +1,36 @@
+table {
+  border: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+button {
+  height: 4em;
+  width: 4em;
+  color: blue;
+}
+
+td {
+  height: 3em;
+  width: 3em;
+  border: 1px solid blue;
+}
+
+#display {
+  padding: auto;
+  text-align: center;
+  color:red;
+}
+
+
+
+#clear {
+  display: block;
+  color: red;
+}
+
+
+
+#equals {
+
+}
