@@ -16,7 +16,7 @@ td {
   border: 1px solid blue;
 }
 
-#display {
+#screen {
   padding: auto;
   text-align: center;
   color:red;
@@ -24,13 +24,13 @@ td {
 
 
 
-#clear {
-  display: block;
+#zero {
+
   color: red;
 }
 
 
 
 #equals {
-
+  color: green;
 }
