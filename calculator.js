@@ -3,7 +3,7 @@ $(document).ready(function(){
   var operator = 0;
   var currentVal = 0;
 
-//on clicking an operator update the currentVal and result variables
+  //on clicking an operator update the currentVal and result variables
   ($(".op")).click(function(){
     currentVal = parseInt($("#screen").html());
     if(operator === 0){
@@ -27,7 +27,7 @@ $(document).ready(function(){
     $("#screen").html("");
   });
 
-//event handlers for operators
+  //event handlers for operators
   ($("#plus")).click(function(){
     operator = 0;
   });
@@ -48,7 +48,7 @@ $(document).ready(function(){
     operator = 4;
   });
 
-//Appending selection to show current equation
+  //Appending selection to show current calculation
   var selectString = function(){
     $("#equation").append(($(this).html()));
   };
@@ -82,45 +82,36 @@ $(document).ready(function(){
       division(result, currentVal);
     }
     else if(operator === 4){
-      $("#screen").html(result);
+      $("#screen").html(result); // have to have something for the this otherwise the error will pop up when you press equals.
     }
     else{
       alert("Error");
       $("#screen").html("0");
     }
+    $("#screen").html(result);
     result = 0;
   });
 
-
-  //*functions*
-
   //append the button pressed to current display
-
   var app = function(){
     $("#screen").append($(this).html());
   };
-
   $('.numb').click(app);
 
   //calculation functions
   var addition = function(result, currentVal) {
     result = result+currentVal;
-    $("#screen").html(result);
-  //  result = 0;
   };
 
   var subtraction = function(currentVal, currentVal) {
      result = result-currentVal;
-    $("#screen").html(result);
   };
 
   var multiply = function(currentVal, currentVal) {
      result = result*currentVal;
-     $("#screen").html(result);
   };
 
   var division = function(currentVal, currentVal) {
     result = result/currentVal;
-    $("#screen").html(result);
   };
 });
