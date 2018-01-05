@@ -1,33 +1,59 @@
 $(document).ready(function(){
 var result = 0;
-var second = 0;
 var operator = 0;
 var currentVal = 0;
 ///////////event handlers for operators
+
+($(".op")).click(function(){
+  currentVal = parseInt($("#screen").html());
+  if(operator === 0){
+    result += currentVal;
+    $("#screen").html("");
+  }
+  else if(operator === 1){
+    result -= currentVal;
+    $("#screen").html("");
+    }
+  else if(operator === 2){
+    result = result * currentVal;
+    $("#screen").html("");
+    }
+  else if(operator === 3){
+    result = result / currentVal;
+    $("#screen").html("");
+  }
+  else if(operator === 4){
+    result = currentVal;
+    $("#screen").html("");
+  }
+  else{
+    alert("rrorrrr");
+    $("#screen").html("");
+  }
+});
+
+
+
 ($("#plus")).click(function(){
   operator = 0;
-  currentVal = parseInt($("#screen").html());
-  result = result + currentVal;
-  $("#screen").html("");
 });
 
 ($("#minus")).click(function(){
   operator = 1;
-  currentVal = parseInt($("#screen").html());
-  $("#screen").html("");
 });
 
 ($("#times")).click(function(){
   operator = 2;
-  currentVal = parseInt($("#screen").html());
-  $("#screen").html("");
 });
 
 ($("#divide")).click(function(){
   operator = 3;
-  currentVal = parseInt($("#screen").html());
-  $("#screen").html("");
 });
+
+($("#equals")).click(function(){
+  operator = 4;
+});
+
 
 //append the button pressed to current display
 // $('.numb').click(function(){
@@ -39,7 +65,6 @@ var currentVal = 0;
 
 ////////////////////////////////////
 //Appending selection to show current equation
-var selection = "";
 
 var selectString = function(){
   $("#test").append(($(this).html()));
@@ -50,15 +75,18 @@ $('button').click(selectString);
 
 //clearing the screen on C press
 $("#zero").click(function(){
-  $("#screen").html("0");
+  $("#screen").html("");
   $("#test").html("");
+  $("#operators").html("");
   currentVal = 0;
-  second = 0;
   result = 0;
+  operators = 0;
 });
 
 
-//clicking on equals runs the calculation
+
+
+//Test for simplified equals solution
 $("#equals").click(function(){
   currentVal = parseInt($("#screen").html());
   $("#test").html("");
@@ -66,20 +94,50 @@ $("#equals").click(function(){
     addition(result, currentVal);
   }
   else if(operator === 1){
-    subtraction(currentVal, second);
+    subtraction(result, currentVal);
   }
   else if(operator === 2){
-    multiply(currentVal, second);
+    multiply(result, currentVal);
   }
   else if(operator === 3){
-    division(currentVal, second);
+    division(result, currentVal);
+  }
+  else if(operator === 4){
+    console.log(result);
+    $("#screen").html(result);
+
+    //$("#screen").html("0");
   }
   else{
     alert("Error");
     $("#screen").html("0");
   }
-
+  result = 0;
 });
+
+
+// //clicking on equals runs the calculation
+// $("#equals").click(function(){
+//   currentVal = parseInt($("#screen").html());
+//   $("#test").html("");
+//   if(operator === 0){
+//     addition(result, currentVal);
+//   }
+//   else if(operator === 1){
+//     subtraction(currentVal, currentVal);
+//   }
+//   else if(operator === 2){
+//     multiply(currentVal, currentVal);
+//   }
+//   else if(operator === 3){
+//     division(currentVal, currentVal);
+//   }
+//   else{
+//     alert("Error");
+//     $("#screen").html("0");
+//   }
+//
+// });
 
 
 
@@ -95,29 +153,29 @@ $('.numb').click(app);
 
 //calculation functions
 var addition = function(result, currentVal) {
-   result = result+currentVal;
+  result = result+currentVal;
+  $("#screen").html(result);
+//  result = 0;
+};
+
+var subtraction = function(currentVal, currentVal) {
+   result = result-currentVal;
+  $("#screen").html(result);
+};
+
+var multiply = function(currentVal, currentVal) {
+   result = result*currentVal;
    $("#screen").html(result);
-   result = 0;
 };
 
-var subtraction = function(currentVal, second) {
-  var currentVal = currentVal-second;
-  $("#screen").html(currentVal);
-};
-
-var multiply = function(currentVal, second) {
-   var currentVal = currentVal*second;
-   $("#screen").html(currentVal);
-};
-
-var division = function(currentVal, second) {
-  var currentVal = currentVal/second;
-  $("#screen").html(currentVal);
+var division = function(currentVal, currentVal) {
+  result = result/currentVal;
+  $("#screen").html(result);
 };
 
 $('button').click(function(){
   $("#current").html(currentVal);
-  $("#sec").html(second);
+  $("#operators").html(operator);
   $("#res").html(result);
 
 });
