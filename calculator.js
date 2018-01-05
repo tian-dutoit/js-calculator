@@ -27,7 +27,7 @@ var currentVal = 0;
     $("#screen").html("");
   }
   else{
-    alert("rrorrrr");
+    alert("Error");
     $("#screen").html("");
   }
 });
@@ -67,7 +67,7 @@ var currentVal = 0;
 //Appending selection to show current equation
 
 var selectString = function(){
-  $("#test").append(($(this).html()));
+  $("#equation").append(($(this).html()));
 };
 
 $('button').click(selectString);
@@ -76,7 +76,7 @@ $('button').click(selectString);
 //clearing the screen on C press
 $("#zero").click(function(){
   $("#screen").html("");
-  $("#test").html("");
+  $("#equation").html("");
   $("#operators").html("");
   currentVal = 0;
   result = 0;
@@ -86,10 +86,10 @@ $("#zero").click(function(){
 
 
 
-//Test for simplified equals solution
+//equation for simplified equals solution
 $("#equals").click(function(){
   currentVal = parseInt($("#screen").html());
-  $("#test").html("");
+  $("#equation").html("");
   if(operator === 0){
     addition(result, currentVal);
   }
@@ -119,7 +119,7 @@ $("#equals").click(function(){
 // //clicking on equals runs the calculation
 // $("#equals").click(function(){
 //   currentVal = parseInt($("#screen").html());
-//   $("#test").html("");
+//   $("#equation").html("");
 //   if(operator === 0){
 //     addition(result, currentVal);
 //   }
