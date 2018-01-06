@@ -50,7 +50,12 @@ $(document).ready(function(){
 
   //Appending selection to show current calculation
   var selectString = function(){
+    if(operator === 4){
+      $("#screen").html("");
+      $("#equation").append(($(this).html()));
+    } else {
     $("#equation").append(($(this).html()));
+      }
   };
   $('button').click(selectString);
 
